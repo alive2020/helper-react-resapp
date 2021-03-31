@@ -10,7 +10,7 @@ const ButtonWrapper = styled.button`
     font-weight: 600;
     cursor: pointer;
     border-radius: 3px;
-    background-color: #044180;
+    background-color: #0e6b5c;
     transition: all 200ms ease-in-out;
 
     &:hover {
@@ -24,5 +24,5 @@ const ButtonWrapper = styled.button`
 export function Button (props) {
     const {size} = props;
 
-    return <ButtonWrapper size={size}>{props.children}</ButtonWrapper>
+    return <ButtonWrapper size={size} className={props.className}>{props.children}</ButtonWrapper>
 }

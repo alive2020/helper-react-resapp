@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import LogoImg from '../../images/logos/logo.png';
@@ -21,20 +22,30 @@ const LogoImage = styled.div`
 const LogoTitle = styled.h2`
     margin: 0;
     font-size: ${({size}) => (size ? size + 'px' : "20px")};
-    color: #fff;
+    color: ${({color})=> (color? color : "#fff")};
     font-weight: 700;
     margin-left: 6px;
 `;
 
+const StyledLink = styled(Link)`
+    text-decoration: none;
+`;
+
 export function BrandLogo(props) {
 
-    const {logoSize, textSize} = props;
+    const {logoSize, textSize, color, hideLogo} = props;
 
     return <BrandLogoContainer>
-            <LogoImage size={logoSize}> 
-                 <img src={LogoImg} alt="Help7 logo" />
-             </LogoImage>
-             <LogoTitle size={textSize}>HelperS</LogoTitle>
+            {!hideLogo && (
+                <StyledLink to="/">
+                <LogoImage size={logoSize}> 
+                        <img src={LogoImg} alt="Help7 logo" />
+                    </LogoImage>
+                    </StyledLink>
+            )}
+            <StyledLink to="/">
+             <LogoTitle size={textSize} color={color}>HelperS</LogoTitle>
+             </StyledLink>
         </BrandLogoContainer>
 
 }
